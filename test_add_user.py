@@ -44,10 +44,8 @@ class TestAddUser(unittest.TestCase):
         wb.find_element_by_name("email").send_keys(user.email)
         wb.find_element_by_name("bday").click()
         Select(wb.find_element_by_name("bday")).select_by_visible_text(user.bday)
-        wb.find_element_by_xpath("//option[@value='8']").click()
         wb.find_element_by_name("bmonth").click()
         Select(wb.find_element_by_name("bmonth")).select_by_visible_text(user.bmonth)
-        wb.find_element_by_xpath("//option[@value='April']").click()
         wb.find_element_by_name("byear").click()
         wb.find_element_by_name("byear").send_keys(user.byear)
         wb.find_element_by_xpath("//div[@id='content']/form/input[20]").click()
@@ -57,7 +55,7 @@ class TestAddUser(unittest.TestCase):
         wb = self.wb
         self.open_home_page(wb)
         self.login(wb, "admin", "secret")
-        self.add_new_user(wb, User("First", "User", "Home", "N.Novgorod", "112", "u.first@mail.ru", "8", "2000", "April"))
+        self.add_new_user(wb, User("First", "User", "Home", "N.Novgorod", "112", "u.first@mail.ru", "1", "2001", "May"))
         self.return_home_page(wb)
         self.logout(wb)
 
