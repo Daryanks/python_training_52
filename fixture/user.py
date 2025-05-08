@@ -6,7 +6,7 @@ class UserHelper:
     def add_new(self, user):
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
-        self.user_fields(user)
+        self.fill_user_form(user)
         wd.find_element_by_xpath("//div[@id='content']/form/input[20]").click()
         wd.find_element_by_link_text("home").click()
 
@@ -15,7 +15,7 @@ class UserHelper:
         self.app.open_home_page()
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         wd.find_element_by_xpath("//form[@action='edit.php']").click()
-        self.user_fields(user)
+        self.fill_user_form(user)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         wd.find_element_by_link_text("home").click()
 
@@ -26,32 +26,22 @@ class UserHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.find_element_by_link_text("home").click()
 
-    def user_fields(self, user):
+    def fill_user_form(self, user):
         wd = self.app.wd
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(user.firstname)
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(user.lastname)
-        wd.find_element_by_name("company").click()
-        wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(user.company)
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(user.address)
-        wd.find_element_by_name("home").click()
-        wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(user.home)
-        wd.find_element_by_name("email").click()
-        wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(user.email)
-        wd.find_element_by_name("bday").click()
-        wd.find_element_by_name("bday").send_keys(user.bday)
-        wd.find_element_by_name("bmonth").click()
-        wd.find_element_by_name("bmonth").send_keys(user.bmonth)
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").send_keys(user.byear)
+        self.change_field_value("firstname", user.firstname)
+        self.change_field_value("lastname", user.lastname)
+        self.change_field_value("company", user.company)
+        self.change_field_value("address", user.address)
+        self.change_field_value("home", user.home)
+        self.change_field_value("email", user.email)
+
+
+    def change_field_value(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
 
 
 
