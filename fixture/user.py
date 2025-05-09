@@ -35,7 +35,6 @@ class UserHelper:
         self.change_field_value("home", user.home)
         self.change_field_value("email", user.email)
 
-
     def change_field_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
@@ -44,5 +43,8 @@ class UserHelper:
             wd.find_element_by_name(field_name).send_keys(text)
 
 
-
+    def count(self):
+        wd = self.app.wd
+        self.app.open_home_page()
+        return len(wd.find_elements_by_name("selected[]"))
 
