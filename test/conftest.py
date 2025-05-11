@@ -13,10 +13,10 @@ def app(request):
     fixture.session.ensure_login("admin", "secret")
     return fixture
 
-    @pytest.fixture(scope="session", autouse=True)
-    def stop(request):
-        def fin():
-            fixture.session.ensure_logout()
-            fixture.destroy()
-        request.addfinalizer(fin)
-        return fixture
+@pytest.fixture(scope="session", autouse=True)
+def stop(request):
+    def fin():
+        fixture.session.ensure_logout()
+        fixture.destroy()
+    request.addfinalizer(fin)
+    return fixture
