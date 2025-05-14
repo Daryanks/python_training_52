@@ -11,11 +11,11 @@ class UserHelper:
         wd.find_element_by_link_text("home").click()
         self.user_cache = None
 
-    def edit_first_user(self, user):
+    def edit_user_by_index(self, user, index):
         wd = self.app.wd
         self.app.open_home_page()
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        wd.find_element_by_xpath("//form[@action='edit.php']").click()
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
+        #wd.find_element_by_xpath("//form[@action='edit.php']").click()
         self.fill_user_form(user)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         wd.find_element_by_link_text("home").click()
@@ -23,8 +23,11 @@ class UserHelper:
 
     def delete_first_user(self):
         wd = self.app.wd
+
+    def delete_user_by_index(self, index):
+        wd = self.app.wd
         self.app.open_home_page()
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.find_element_by_link_text("home").click()
         self.user_cache = None
