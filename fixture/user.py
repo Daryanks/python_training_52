@@ -1,4 +1,4 @@
-
+from model.user import User
 class UserHelper:
     def __init__(self, app):
         self.app = app
@@ -47,4 +47,16 @@ class UserHelper:
         wd = self.app.wd
         self.app.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_users_list(self):
+        wd = self.app.wd
+        self.app.open_home_page()
+        users = []
+        elements = wd.find_elements_by_css_selector("tr")
+        for element in elements[1:]:
+            text = element.text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            parts = text.split()
+            users.append(User(firstname=parts[1], lastname=parts[0], id=id))
+        return users
 
