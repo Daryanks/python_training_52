@@ -7,7 +7,7 @@ def test_add_user(app):
     user = User("Second", "Ivan")
     user.id = old_users[0].id
     app.user.edit_first_user(user)
+    assert len(old_users) == app.user.count()
     new_users = app.user.get_users_list()
-    assert len(old_users) == len(new_users)
     old_users[0] = user
     assert sorted(old_users, key=User.id_or_max) == sorted(new_users, key=User.id_or_max)

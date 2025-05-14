@@ -9,6 +9,7 @@ class UserHelper:
         self.fill_user_form(user)
         wd.find_element_by_xpath("//div[@id='content']/form/input[20]").click()
         wd.find_element_by_link_text("home").click()
+        self.user_cache = None
 
     def edit_first_user(self, user):
         wd = self.app.wd
@@ -18,6 +19,7 @@ class UserHelper:
         self.fill_user_form(user)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         wd.find_element_by_link_text("home").click()
+        self.user_cache = None
 
     def delete_first_user(self):
         wd = self.app.wd
@@ -25,6 +27,7 @@ class UserHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.find_element_by_link_text("home").click()
+        self.user_cache = None
 
     def fill_user_form(self, user):
         wd = self.app.wd
@@ -48,15 +51,18 @@ class UserHelper:
         self.app.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    user_cache = None
+
     def get_users_list(self):
-        wd = self.app.wd
-        self.app.open_home_page()
-        users = []
-        elements = wd.find_elements_by_css_selector("tr")
-        for element in elements[1:]:
-            text = element.text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            parts = text.split()
-            users.append(User(firstname=parts[1], lastname=parts[0], id=id))
-        return users
+        if self.user_cache is None:
+            wd = self.app.wd
+            self.app.open_home_page()
+            self.user_cache = []
+            elements = wd.find_elements_by_css_selector("tr")
+            for element in elements[1:]:
+                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                parts = text.split()
+                self.user_cache.append(User(firstname=parts[1], lastname=parts[0], id=id))
+        return list(self.user_cache)
 
