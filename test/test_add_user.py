@@ -3,7 +3,7 @@ from model.user import User
 
 def test_add_user(app):
     old_users = app.user.get_users_list()
-    user = User(firstname="Darya", lastname="Kash", address= "N.Novgorod", email= "u.first@mail.ru")
+    user = User(firstname="User", lastname="First", address= "N.Novgorod", email= "u.first@mail.ru")
     app.user.add_new(user)
     assert len(old_users) + 1 == app.user.count()
     new_users = app.user.get_users_list()

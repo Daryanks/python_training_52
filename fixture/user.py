@@ -15,7 +15,6 @@ class UserHelper:
         wd = self.app.wd
         self.app.open_home_page()
         wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
-        #wd.find_element_by_xpath("//form[@action='edit.php']").click()
         self.fill_user_form(user)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         wd.find_element_by_link_text("home").click()
@@ -52,7 +51,8 @@ class UserHelper:
     def count(self):
         wd = self.app.wd
         self.app.open_home_page()
-        return len(wd.find_elements_by_name("selected[]"))
+        users = len(wd.find_elements_by_name("selected[]")) - 1
+        return users
 
     user_cache = None
 
@@ -62,10 +62,15 @@ class UserHelper:
             self.app.open_home_page()
             self.user_cache = []
             elements = wd.find_elements_by_css_selector("tr")
-            for element in elements[1:]:
-                text = element.text
+            for i in range(2, len(elements), 1):
+                element = elements[i]
                 id = element.find_element_by_name("selected[]").get_attribute("value")
-                parts = text.split()
-                self.user_cache.append(User(firstname=parts[1], lastname=parts[0], id=id))
+                lastname = wd.find_element_by_xpath(f"//tr[{i}]/td[2]")
+                firstname = wd.find_element_by_xpath(f"//tr[{i}]/td[3]")
+                print (firstname.text)
+                print(lastname.text)
+                self.user_cache.append(User(firstname=firstname.text, lastname=lastname.text, id=id))
         return list(self.user_cache)
+
+
 
