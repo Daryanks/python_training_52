@@ -51,8 +51,7 @@ class UserHelper:
     def count(self):
         wd = self.app.wd
         self.app.open_home_page()
-        users = len(wd.find_elements_by_name("selected[]")) - 1
-        return users
+        return len(wd.find_elements_by_name("selected[]"))
 
     user_cache = None
 
@@ -62,15 +61,14 @@ class UserHelper:
             self.app.open_home_page()
             self.user_cache = []
             elements = wd.find_elements_by_css_selector("tr")
-            for i in range(2, len(elements), 1):
+            for i in range(1, len(elements), 1):
                 element = elements[i]
+                xpath_id = i + 1
                 id = element.find_element_by_name("selected[]").get_attribute("value")
-                lastname = wd.find_element_by_xpath(f"//tr[{i}]/td[2]")
-                firstname = wd.find_element_by_xpath(f"//tr[{i}]/td[3]")
+                lastname = wd.find_element_by_xpath(f"//tr[{xpath_id}]/td[2]")
+                firstname = wd.find_element_by_xpath(f"//tr[{xpath_id}]/td[3]")
                 print (firstname.text)
                 print(lastname.text)
                 self.user_cache.append(User(firstname=firstname.text, lastname=lastname.text, id=id))
         return list(self.user_cache)
-
-
 
