@@ -1,6 +1,6 @@
 from sys import maxsize
 class User:
-    def __init__(self, firstname=None, lastname=None, company=None, address=None, home=None, email=None, id=None):
+    def __init__(self, id=None, firstname=None, lastname=None, company=None, address=None, home=None, email=None, all_phones_from_homepage=None, homephone=None, workphone=None, mobilephone=None, faxphone=None):
         self.firstname = firstname
         self.lastname = lastname
         self.company = company
@@ -8,6 +8,12 @@ class User:
         self.home = home
         self.email = email
         self.id = id
+        self.homephone = homephone
+        self.workphone = workphone
+        self.mobilephone = mobilephone
+        self.faxphone = faxphone
+        self.all_phones_from_homepage = all_phones_from_homepage
+
 
     def __repr__(self):
         return "%s:%s:%s" % (self.id, self.firstname, self.lastname)
