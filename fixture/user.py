@@ -38,7 +38,7 @@ class UserHelper:
         self.change_field_value("lastname", user.lastname)
         self.change_field_value("company", user.company)
         self.change_field_value("address", user.address)
-        self.change_field_value("home", user.home)
+        self.change_field_value("home", user.homephone)
         self.change_field_value("email", user.email)
 
     def change_field_value(self, field_name, text):
