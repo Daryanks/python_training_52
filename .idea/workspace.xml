@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fef0818-cf1f-41ec-91b2-54d012ec2d73" name="Changes" comment="Оптимизированы переходы между страницами">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/python_training.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7fef0818-cf1f-41ec-91b2-54d012ec2d73" name="Changes" comment="Генераторы тестовых данных">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_add_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_add_group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_add_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_add_user.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,42 +41,94 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Python tests.Python tests for test_add_group.TestAddGroup.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_add_group.test_add_group.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_add_user.TestAddUser.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_add_group.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_add_user.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_del_group.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_add_group.test_add_group.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_add_user.test_add_user.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_del_group.test_delete_first_group.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_add_group.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_add_user.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_del_group.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_del_user.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_edit_group.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_edit_user.py.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Дарья/PycharmProjects/python_training/test&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Python tests.Python tests for test_add_group.TestAddGroup.executor": "Run",
+    "Python tests.Python tests for test_add_group.test_add_group.executor": "Run",
+    "Python tests.Python tests for test_add_user.TestAddUser.executor": "Run",
+    "Python tests.Python tests in test_add_group.py.executor": "Run",
+    "Python tests.Python tests in test_add_user.py.executor": "Run",
+    "Python tests.Python tests in test_del_group.py.executor": "Run",
+    "Python tests.pytest for test_add_group.test_add_group.executor": "Run",
+    "Python tests.pytest for test_add_user.test_add_user.executor": "Run",
+    "Python tests.pytest for test_del_group.test_delete_first_group.executor": "Run",
+    "Python tests.pytest for test_del_user.test_delete_some_user.executor": "Run",
+    "Python tests.pytest for test_user_info_compare.test_user_info_compare.executor": "Run",
+    "Python tests.pytest for test_user_phones.test_phones_on_home_page.executor": "Run",
+    "Python tests.pytest for test_user_phones.test_phones_on_view_page.executor": "Debug",
+    "Python tests.pytest in test.executor": "Run",
+    "Python tests.pytest in test_add_group.py.executor": "Run",
+    "Python tests.pytest in test_add_user.py.executor": "Run",
+    "Python tests.pytest in test_del_group.py.executor": "Run",
+    "Python tests.pytest in test_del_user.py.executor": "Run",
+    "Python tests.pytest in test_edit_group.py.executor": "Run",
+    "Python tests.pytest in test_edit_user.py.executor": "Run",
+    "Python tests.pytest in test_user_phones.py.executor": "Run",
+    "Python.group.executor": "Run",
+    "Python.user.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Дарья/PycharmProjects/python_training/test",
+    "settings.editor.selected.configurable": "inlay.hints"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Дарья\PycharmProjects\python_training\data" />
       <recent name="C:\Users\Дарья\PycharmProjects\python_training\test" />
       <recent name="C:\Users\Дарья\PycharmProjects\python_training" />
       <recent name="C:\Users\Дарья\PycharmProjects\python_training\model" />
       <recent name="C:\Users\Дарья\PycharmProjects\python_training\fixture" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test_add_group.py">
+  <component name="RunManager" selected="Python tests.pytest in test_add_user.py">
+    <configuration name="group" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="python_training" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/generator" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generator/group.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="user" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="python_training" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/generator" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generator/user.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest for test_add_group.test_add_group" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="python_training" />
       <option name="ENV_FILES" value="" />
@@ -93,6 +143,23 @@
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_add_group.test_add_group&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_add_user.test_add_user" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="python_training" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_add_user.test_add_user&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -156,7 +223,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -167,73 +234,22 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_del_user.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="python_training" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/test_del_user.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest in test_edit_group.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="python_training" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/test_edit_group.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest in test_edit_user.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="python_training" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/test_edit_user.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="Python.user" />
+      <item itemvalue="Python.group" />
+      <item itemvalue="Python tests.pytest in test" />
       <item itemvalue="Python tests.pytest in test_add_group.py" />
       <item itemvalue="Python tests.pytest in test_add_user.py" />
-      <item itemvalue="Python tests.pytest in test" />
       <item itemvalue="Python tests.pytest in test_del_group.py" />
       <item itemvalue="Python tests.pytest for test_add_group.test_add_group" />
-      <item itemvalue="Python tests.pytest in test_del_user.py" />
-      <item itemvalue="Python tests.pytest in test_edit_group.py" />
-      <item itemvalue="Python tests.pytest in test_edit_user.py" />
+      <item itemvalue="Python tests.pytest for test_add_user.test_add_user" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in test_edit_user.py" />
+        <item itemvalue="Python.user" />
+        <item itemvalue="Python.group" />
         <item itemvalue="Python tests.pytest in test_del_group.py" />
-        <item itemvalue="Python tests.pytest in test_edit_group.py" />
-        <item itemvalue="Python tests.pytest in test_del_user.py" />
+        <item itemvalue="Python tests.pytest for test_add_user.test_add_user" />
         <item itemvalue="Python tests.pytest for test_add_group.test_add_group" />
       </list>
     </recent_temporary>
@@ -374,7 +390,111 @@
       <option name="project" value="LOCAL" />
       <updated>1746805566627</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Исправлено выравнивание в функции финализации и закрытия браубера">
+      <option name="closed" value="true" />
+      <created>1746967444587</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1746967444587</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Исправлено выравнивание в функции финализации и закрытия браубера">
+      <option name="closed" value="true" />
+      <created>1746967519306</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1746967519306</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Исправлено выравнивание в функции финализации и закрытия браубера">
+      <option name="closed" value="true" />
+      <created>1746967557522</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1746967557522</updated>
+    </task>
+    <task id="LOCAL-00019" summary="обавлены проверки путём сравнения списков в тестах">
+      <option name="closed" value="true" />
+      <created>1747228355792</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1747228355792</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Реализовано кеширование для методов, загружающих списки групп и контактов.">
+      <option name="closed" value="true" />
+      <created>1747233476156</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1747233476156</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Удаление и модификация случайного объекта">
+      <option name="closed" value="true" />
+      <created>1747238065304</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1747238065304</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Исправлены строки для получения имени и фамилии">
+      <option name="closed" value="true" />
+      <created>1747408441299</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1747408441299</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Исправлено вычисление xpath для элементов списка пользователей">
+      <option name="closed" value="true" />
+      <created>1747654455364</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1747654455365</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Тест для проверки телефонов на страницах">
+      <option name="closed" value="true" />
+      <created>1747855863022</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1747855863022</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Параметризованы тесты для создания групп и контактов">
+      <option name="closed" value="true" />
+      <created>1747941884817</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1747941884817</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Добавлены опции командной строки, позволяющие указывать тип браузера и адрес тестируемого приложения">
+      <option name="closed" value="true" />
+      <created>1748361068867</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1748361068867</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Загрузка информации о тестируемом приложении из файла">
+      <option name="closed" value="true" />
+      <created>1748457811576</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1748457811576</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Генераторы тестовых данных">
+      <option name="closed" value="true" />
+      <created>1748772491193</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1748772491193</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -389,7 +509,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add test group" />
     <MESSAGE value="1. Повышение читаемости кода&#10;2. Рефакторинг отдельных методов&#10;3. Передача параметров в методы" />
     <MESSAGE value="1.Добавлен тест на создание контакта с выделенными методами и классом" />
     <MESSAGE value="Удалена перезапись на захардкоженные значения" />
@@ -404,6 +523,17 @@
     <MESSAGE value="1. Валидация фикстуры перед каждым тестом&#10;2. Проверка текущего состояния сессии операциями login и logout" />
     <MESSAGE value="Добавлены предусловия в тестах" />
     <MESSAGE value="Оптимизированы переходы между страницами" />
-    <option name="LAST_COMMIT_MESSAGE" value="Оптимизированы переходы между страницами" />
+    <MESSAGE value="Исправлено выравнивание в функции финализации и закрытия браубера" />
+    <MESSAGE value="обавлены проверки путём сравнения списков в тестах" />
+    <MESSAGE value="Реализовано кеширование для методов, загружающих списки групп и контактов." />
+    <MESSAGE value="Удаление и модификация случайного объекта" />
+    <MESSAGE value="Исправлены строки для получения имени и фамилии" />
+    <MESSAGE value="Исправлено вычисление xpath для элементов списка пользователей" />
+    <MESSAGE value="Тест для проверки телефонов на страницах" />
+    <MESSAGE value="Параметризованы тесты для создания групп и контактов" />
+    <MESSAGE value="Добавлены опции командной строки, позволяющие указывать тип браузера и адрес тестируемого приложения" />
+    <MESSAGE value="Загрузка информации о тестируемом приложении из файла" />
+    <MESSAGE value="Генераторы тестовых данных" />
+    <option name="LAST_COMMIT_MESSAGE" value="Генераторы тестовых данных" />
   </component>
 </project>
