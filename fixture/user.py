@@ -85,8 +85,10 @@ class UserHelper:
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 lastname = cells[1].text
                 firstname = cells[2].text
+                address = cells[3].text
                 all_phones = cells[5].text
-                self.user_cache.append(User(firstname=firstname, lastname=lastname, id=id, all_phones_from_homepage=all_phones))
+                all_emails = cells[4].text
+                self.user_cache.append(User(firstname=firstname, lastname=lastname, id=id, address=address, all_phones_from_homepage=all_phones, all_emails_from_homepage=all_emails))
         return list(self.user_cache)
 
     def open_user_to_edit_by_index(self, index):
@@ -103,17 +105,6 @@ class UserHelper:
         cell = row.find_elements_by_tag_name("td")[6]
         cell.find_element_by_tag_name("a").click()
 
-    def get_user_info_from_edit_page(self, index):
-        wd = self.app.wd
-        self.open_user_to_edit_by_index(index)
-        id= wd.find_element_by_name("id").get_attribute("value")
-        firstname = wd.find_element_by_name("firstname").get_attribute("value")
-        lastname = wd.find_element_by_name("lastname").get_attribute("value")
-        homephone = wd.find_element_by_name("home").get_attribute("value")
-        workphone = wd.find_element_by_name("work").get_attribute("value")
-        mobilephone = wd.find_element_by_name("mobile").get_attribute("value")
-        return User(id=id, firstname=firstname, lastname=lastname, homephone=homephone, workphone=workphone, mobilephone=mobilephone)
-
     def get_users_from_view_page(self, index):
         wd = self.app.wd
         self.open_user_view_by_index(index)
@@ -124,3 +115,27 @@ class UserHelper:
         return User(homephone=homephone, workphone=workphone,
                     mobilephone=mobilephone)
 
+    def get_user_info_from_edit_page(self, index):
+        wd = self.app.wd
+        self.open_user_to_edit_by_index(index)
+        id= wd.find_element_by_name("id").get_attribute("value")
+        firstname = wd.find_element_by_name("firstname").get_attribute("value")
+        lastname = wd.find_element_by_name("lastname").get_attribute("value")
+        address = wd.find_element_by_name("address").get_attribute("value")
+        homephone = wd.find_element_by_name("home").get_attribute("value")
+        workphone = wd.find_element_by_name("work").get_attribute("value")
+        mobilephone = wd.find_element_by_name("mobile").get_attribute("value")
+        faxphone = wd.find_element_by_name("fax").get_attribute("value")
+        email = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
+        return User(id=id, firstname=firstname, lastname=lastname, address=address, homephone=homephone, workphone=workphone, mobilephone=mobilephone, faxphone=faxphone, email=email, email2=email2, email3=email3)
+
+    def get_users_from_home_page(self, index):
+        wd = self.app.wd
+        row = wd.find_elements_by_name("entry")[index]
+        id = row.find_element_by_tag_name("input").get_attribute("value")
+        firstname = row.find_elements_by_tag_name("td")[2].text
+        lastname = row.find_elements_by_tag_name("td")[1].text
+        address = row.find_elements_by_tag_name("td")[3].text
+        return User(id=id, firstname=firstname, lastname=lastname, address=address)
