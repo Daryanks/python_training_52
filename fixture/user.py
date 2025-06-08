@@ -85,10 +85,10 @@ class UserHelper:
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 lastname = cells[1].text
                 firstname = cells[2].text
-                address = cells[3].text
-                all_phones = cells[5].text
-                all_emails = cells[4].text
-                self.user_cache.append(User(firstname=firstname, lastname=lastname, id=id, address=address, all_phones_from_homepage=all_phones, all_emails_from_homepage=all_emails))
+                #address = cells[3].text
+                #all_phones = cells[5].text
+                #all_emails = cells[4].text
+                self.user_cache.append(User(firstname=firstname, lastname=lastname, id=id))
         return list(self.user_cache)
 
     def open_user_to_edit_by_index(self, index):

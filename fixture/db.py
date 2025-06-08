@@ -21,7 +21,7 @@ class DbFixture:
             cursor.close()
         return list
 
-    def get_user_list(self):
+    def get_users_list(self):
         list = []
         cursor = self.connection.cursor()
         try:
