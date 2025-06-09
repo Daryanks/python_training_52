@@ -1,3 +1,4 @@
+from selenium.webdriver.support.ui import Select
 from model.user import User
 import re
 class UserHelper:
@@ -12,6 +13,14 @@ class UserHelper:
         wd.find_element_by_link_text("home").click()
         self.user_cache = None
 
+    def add_user_to_group(self, id, group):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text(group.name)
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[4]/select/option[5]").click()
+        wd.find_element_by_name("add").click()
+
+
     def edit_user_by_index(self, user, index):
         wd = self.app.wd
         self.app.open_home_page()
@@ -24,13 +33,12 @@ class UserHelper:
     def edit_user_by_id(self, user, id):
         wd = self.app.wd
         self.app.open_home_page()
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        wd.find_element_by_tag_name("a[href='edit.php?id=%s']" % id).click()
+        #wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_user_form(user)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         wd.find_element_by_link_text("home").click()
         self.user_cache = None
-
-
 
     def delete_first_user(self):
         wd = self.app.wd
