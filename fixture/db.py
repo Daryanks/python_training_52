@@ -33,5 +33,18 @@ class DbFixture:
             cursor.close()
         return list
 
+    def get_user_info_from_db_by_id(self, id):
+        cursor = self.connection.cursor()
+        try:
+            user = []
+            cursor.execute("select id, firstname, lastname, address, home, mobile, work, email, email2, email3 from addressbook where id=%s", id)
+            for row in cursor:
+                (id, firstname, lastname, address, home, mobile, work, email, email2, email3) = row
+                user.append(User(id=str(id), firstname=firstname, lastname=lastname, address=address, homephone=home, mobilephone=mobile, workphone=work, email=email, email2=email2, email3=email3))
+        finally:
+            cursor.close()
+        return user
+
+
     def destroy(self):
         self.connection.close()
