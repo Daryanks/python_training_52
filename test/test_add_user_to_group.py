@@ -6,7 +6,8 @@ import random
 db = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 
 def test_group_list(app):
-    group = Group(id="37", name="Test")
+    groups = db.get_group_list()
+    group = random.choice(groups)
     users = db.get_users_not_in_group(group)
     users_in_group = db.get_users_in_group(group)
     user = random.choice(users)
