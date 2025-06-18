@@ -7,6 +7,8 @@ db = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 
 def test_delete_user_from_group(app):
     groups = db.get_group_list()
+    if len (db.get_group_list()) == 0:
+        app.group.create(Group(name="test"))
     group = random.choice(groups)
     if len(db.get_users_in_group(group)) == 0:
         users_not_in_group = db.get_users_not_in_group(group)
