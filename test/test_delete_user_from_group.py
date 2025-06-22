@@ -6,7 +6,7 @@ import random
 db = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 
 def test_delete_user_from_group(app):
-    if len (db.get_group_list()) == 0:
+    if len(db.get_group_list()) == 0:
         app.group.create(Group(name="test"))
     groups = db.get_group_list()
     group = random.choice(groups)
