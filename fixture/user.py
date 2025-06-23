@@ -17,8 +17,15 @@ class UserHelper:
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
         Select(wd.find_element_by_name("to_group")).select_by_visible_text(group.name)
-        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[4]/select/option[5]").click()
-        wd.find_element_by_name("add").click()
+        wd.find_element_by_css_selector("input[name=\"add\"]").click()
+
+    def delete_user_from_group(self, id, group):
+        wd = self.app.wd
+        wd.find_element_by_name("group").click()
+        Select(wd.find_element_by_name("group")).select_by_visible_text(group.name)
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        wd.find_element_by_name("remove").click()
+        wd.find_element_by_link_text("group page \"Test\"").click()
 
 
     def edit_user_by_index(self, user, index):
@@ -34,7 +41,6 @@ class UserHelper:
         wd = self.app.wd
         self.app.open_home_page()
         wd.find_element_by_tag_name("a[href='edit.php?id=%s']" % id).click()
-        #wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_user_form(user)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         wd.find_element_by_link_text("home").click()
