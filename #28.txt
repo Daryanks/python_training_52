@@ -1,0 +1,48 @@
+Started by user admin
+Running as SYSTEM
+Building in workspace C:\jenkins_home\workspace\addressbok_tests
+The recommended git tool is: NONE
+No credentials specified
+ > C:\Program Files\Git\bin\git.exe rev-parse --resolve-git-dir C:\jenkins_home\workspace\addressbok_tests\.git # timeout=10
+Fetching changes from the remote Git repository
+ > C:\Program Files\Git\bin\git.exe config remote.origin.url https://github.com/Daryanks/python_training_52 # timeout=10
+Fetching upstream changes from https://github.com/Daryanks/python_training_52
+ > C:\Program Files\Git\bin\git.exe --version # timeout=10
+ > git --version # 'git version 2.50.0.windows.1'
+ > C:\Program Files\Git\bin\git.exe fetch --tags --force --progress -- https://github.com/Daryanks/python_training_52 +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > C:\Program Files\Git\bin\git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision db539be7a34949f708ddc01d980fe06783cfab63 (refs/remotes/origin/master)
+ > C:\Program Files\Git\bin\git.exe config core.sparsecheckout # timeout=10
+ > C:\Program Files\Git\bin\git.exe checkout -f db539be7a34949f708ddc01d980fe06783cfab63 # timeout=10
+Commit message: "Fixed"
+ > C:\Program Files\Git\bin\git.exe rev-list --no-walk db539be7a34949f708ddc01d980fe06783cfab63 # timeout=10
+[addressbok_tests] $ cmd.exe /c call C:\Users\5956~1\AppData\Local\Temp\shiningpanda15575935660852878733.bat
+
+C:\jenkins_home\workspace\addressbok_tests>pip install -m requirements.txt 
+
+Usage:   
+  pip install [options] <requirement specifier> [package-index-options] ...
+  pip install [options] -r <requirements file> [package-index-options] ...
+  pip install [options] [-e] <vcs project url> ...
+  pip install [options] [-e] <local project path> ...
+  pip install [options] <archive url/path> ...
+
+no such option: -m
+
+C:\jenkins_home\workspace\addressbok_tests>py.test --junitxml=results.xml test\test_add_group.py test\test_add_user.py 
+============================= test session starts =============================
+platform win32 -- Python 3.12.2, pytest-8.0.0, pluggy-1.4.0
+rootdir: C:\jenkins_home\workspace\addressbok_tests
+plugins: allure-pytest-2.13.2
+collected 11 items
+
+test\test_add_group.py ......                                            [ 54%]
+test\test_add_user.py .....                                              [100%]
+
+- generated xml file: C:\jenkins_home\workspace\addressbok_tests\results.xml --
+============================= 11 passed in 24.17s =============================
+
+C:\jenkins_home\workspace\addressbok_tests>exit 0 
+Recording test results
+[Checks API] No suitable checks publisher found.
+Finished: SUCCESS
