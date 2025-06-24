@@ -2,7 +2,7 @@ pytest
 pytest-bdd
 selenium==3.141.0
 jsonpickle==4.0.1
-pony
+pony==0.7.19
 urllib3==1.26.12
 pymysql==1.1.1
 mysql-connector-python-rf
